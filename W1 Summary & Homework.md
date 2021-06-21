@@ -32,7 +32,36 @@ https://leetcode-cn.com/problems/merge-sorted-array/description/
 https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 - 原地修改有序数组，不能开辟新的数组空间
 - 主体思路：因为数组有序，则一个元素与前面的元素不相同时保留，相同时删除
+- 细节：
+  - 索引越界问题：当i=0时，nums[0]是必然保留的，解决i-1的越界
+  - 编辑过的数组元素数量一定小于等于原数组长度，故不存在覆盖问题
+```C++
+  int removeDuplicates(vector<int>& nums) {
+    int i, n = 0;
+    for (i = 0; i < nums.size(); i++){
+        if (i == 0 || nums[i] != nums[i - 1]){
+        nums[n] = nums[i];
+        n++;
+        }
+    }
+    return n;
+  }
+```
 
+#### LC283 移动零 EASY
+https://leetcode-cn.com/problems/move-zeroes/
+- 在原数组操作，将所有零移动到数组末尾，同时保证非零元素的相对顺序
+- 主体思路：当数组中一个元素不等于零，就保留这个元素
+- 细节：
+  - 是否保留元素的判断条件
+  - 在非零元素保留之后补零：
+  ```C++
+    // 补零模块
+    while (n < nums.size()) {
+        nums[n] = 0;
+        n++;
+    }
+  ```
 
 
 
