@@ -106,8 +106,11 @@ class Solution {
         return last;
     }
 }
+// 测试时可用空链表[]，看是否会崩溃
 ```
-
+-------
+#### LC25 k个一组反转链表 HARD
+https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
 
 
 
