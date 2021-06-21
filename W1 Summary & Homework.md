@@ -26,6 +26,7 @@ https://leetcode-cn.com/problems/merge-sorted-array/description/
           j--;
       }
   }
+  // 时间复杂度为O(n)
 ```
 -------
 #### LC26 删除有序数组中的重复项 EASY
@@ -46,6 +47,7 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
     }
     return n;
   }
+  // 时间复杂度为O(n)
 ```
 
 #### LC283 移动零 EASY
@@ -61,10 +63,15 @@ https://leetcode-cn.com/problems/move-zeroes/
         nums[n] = 0;
         n++;
     }
+    // 完整代码for-loop循环n次，时间复杂度为O(n)
   ```
+<br/>
 
+> LC26去重与LC283移动零这两题的实现思路是相同的：满足怎样的条件式即可对数组元素实行原地操作，同时考虑索引边界与原数组的被覆盖问题。
+<br/>
 
-
+### Linked List 链表
+-------
 
 
 
