@@ -12,6 +12,7 @@ https://leetcode-cn.com/problems/merge-sorted-array/description/
     - 建立新数组，合并完成后拷贝进`num1`
     - 倒放合并数组元素，`i`与`j`自减，不需要新数组`nums3`
 ```C++
+  // C++
   // 归并排序的基本操作
   int i = m - 1, j = n - 1, k;
   for (k = m + n - 1; k >= 0; k--){ // k从nums1的末尾开始放置
@@ -35,6 +36,7 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
   - 索引越界问题：当`i = 0`时，`nums[0]`是必然保留的，解决`i - 1`的越界
   - 编辑过的数组元素数量一定小于等于原数组长度，故不存在覆盖问题
 ```C++
+  // C++
   int removeDuplicates(vector<int>& nums) {
       int i, n = 0;
       for (i = 0; i < nums.size(); i++){
@@ -57,6 +59,7 @@ https://leetcode-cn.com/problems/move-zeroes/
   - 是否保留元素的判断条件
   - 在非零元素保留之后补零：
   ```C++
+    // C++
     // 补零模块
     while (n < nums.size()) {
         nums[n] = 0;
@@ -78,6 +81,7 @@ https://leetcode-cn.com/problems/reverse-linked-list/
 - 细节：
 	- 更改每条边需要访问链表，只要`head`节点不为`null`，则把`head`节点变为`next`节点：
   ```Java
+  // Java
   // 访问链表的模版
   while (head != null) {
       head = head.next;
@@ -86,6 +90,7 @@ https://leetcode-cn.com/problems/reverse-linked-list/
 	- `head.next`被更改（改`n`条边），`last`与`head`向后移动，需要用临时变量存储原本的`head.next`节点
 	- `last`需要更新，当`head`向后移动一位，`last`也变成移动之前的`head`
 ```Java
+// Java
 // 完整代码
 class Solution {
     public ListNode reverseList(ListNode head) {
@@ -119,6 +124,7 @@ https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
     - 如果剩余节点不足`k`个则返回`null`
     - 当`k`为`0`时，返回当前`head`节点为`end`
     ```Java
+    // Java
     // 向后走k-1步找到k个一组的组末尾节点
     private ListNode getEnd(ListNode head, k) {
         while (head != null){
@@ -142,7 +148,7 @@ https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
     - 当`while`遍历到最后`head == end`时，`end(head)`仍要指向上一个`last`
 
 ```Java
-// 完整代码
+// Java 完整代码
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         // 建立保护节点
@@ -258,8 +264,18 @@ https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
 #### LC1248 统计「优美子数组」 Medium
 https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
 - 如果某个连续子数组中恰好有`k`个奇数数字，这个子数组就是「优美子数组」，返回这个数组中「优美子数组」的数目
-- 主体思路：
+- 主体思路：连续数组转变为前缀和问题
   - 将数组元素变奇偶性，对2取模，剩下1和0
+  - 子段里含有`k`个奇数数字就等价于子段里有`k`个1，即统计有多少连续子数组（子段）的和为`k`？
+  - 暴力枚举法：将两个循环变量分离，当`r`在`1-n`在外层遍历，固定外层后`l`在`1-r`内层遍历，如果满足前缀和`s[r] - s[l-1] == k`的条件，统计数目加一，此方法最坏为`O(n)`
+  - 在暴力枚举法基础上的优化：固定外层循环变量后，考虑内层满足的条件  
+    对于每个`r(1~n)`，有几个`l(1~r)`，可以满足`s[r] - s[l-1] = k`  
+    对于每个`i(1~n)`，有几个`j(0~i-1)`，可以满足`s[i] - s[j] = k`  
+    对于每个`i(1~n)`，有几个`j(0~i-1)`，可以满足`s[j] = s[i] - k`  
+    对于每个`i(1~n)`，有几个`s[j], j(0~i-1)`等于`s[i] - k`  
+    也就是统计数组`s`中，遍历`s[i]`后，等于`s[i] - k`的数的数量  
+- 细节：
+  - 将数组下标从`0~n-1`变为`1~n`
 
 
 
