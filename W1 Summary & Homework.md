@@ -4,7 +4,7 @@
 
 ### Array 数组
 -------
-#### LC88 合并两个有序数组 EASY
+#### LC88 合并两个有序数组 Easy
 https://leetcode-cn.com/problems/merge-sorted-array/description/
 - `nums1`与`nums2`均为有序数组，且`nums1`空间已经开辟好，有足够的空间保存来自`num2`的元素
 - 主体思路：`i, j`两个索引自增后比较数组元素大小，谁小放谁
@@ -29,7 +29,7 @@ https://leetcode-cn.com/problems/merge-sorted-array/description/
   // 时间复杂度为O(n)
 ```
 -------
-#### LC26 删除有序数组中的重复项 EASY
+#### LC26 删除有序数组中的重复项 Easy
 https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 - 原地修改有序数组，不能开辟新的数组空间
 - 主体思路：因为数组有序，则一个元素与前面的元素不相同时保留，相同时删除
@@ -51,7 +51,7 @@ https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 	
 ```
 
-#### LC283 移动零 EASY
+#### LC283 移动零 Easy
 https://leetcode-cn.com/problems/move-zeroes/
 - 在原数组操作，将所有零移动到数组末尾，同时保证非零元素的相对顺序
 - 主体思路：当数组中一个元素不等于零，就保留这个元素
@@ -73,7 +73,7 @@ https://leetcode-cn.com/problems/move-zeroes/
 
 ### Linked List 链表
 -------
-#### LC206 反转链表 EASY
+#### LC206 反转链表 Easy
 https://leetcode-cn.com/problems/reverse-linked-list/
 - 输入一个头节点，返回一个头节点，返回的头节点指向为反转的原链表
 - 主体思路：因为末节点指向`null`，`n`个节点的链表，需要更改`n`条边，将指向`next`节点改为指向`last`节点，而单链表只能向后访问，没有`last`节点，故需要开辟一个新变量用来记录`last`节点
@@ -109,7 +109,7 @@ class Solution {
 // 测试时可用空链表[]，看是否会崩溃
 ```
 -------
-#### LC25 k个一组反转链表 HARD
+#### LC25 k个一组反转链表 Hard
 https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
 - 主体思路：
   - 模块化处理Hard问题，首先明确我们的任务可以分为分组和反转
@@ -144,6 +144,7 @@ https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
     - 当`while`遍历到最后`head == end`时，`end(head)`仍要指向上一个`last`
 
 ```Java
+// 完整代码
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         // 建立保护节点
@@ -167,8 +168,7 @@ class Solution {
             head = next_group_head; // 将当前组的开头更新为下一组的新开头
 
         }
-        return protect.next;
-
+        return protect.next; // 保护节点的next是成组反转后的链表开头
     }
 
     // 向后走k-1步找到k个一组的组末尾节点
@@ -199,11 +199,14 @@ class Solution {
     }
 }
 ```
+-------
+#### LC141 环形链表 Easy
+https://leetcode-cn.com/problems/linked-list-cycle/
 
+#### LC142 环形链表 Medium
+https://leetcode-cn.com/problems/linked-list-cycle-ii/
 
-
-
-
+-------
 
 
 
