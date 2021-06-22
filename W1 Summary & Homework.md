@@ -79,12 +79,12 @@ https://leetcode-cn.com/problems/reverse-linked-list/
 - 主体思路：因为末节点指向`null`，`n`个节点的链表，需要更改`n`条边，将指向`next`节点改为指向`last`节点，而单链表只能向后访问，没有`last`节点，故需要开辟一个新变量用来记录`last`节点
 - 细节：
 	- 更改每条边需要访问链表，只要`head`节点不为`null`，则把`head`节点变为`next`节点：
-	```Java
+  ```Java
   // 访问链表的模版
   while (head != null) {
       head = head.next;
   }
-	```
+  ```
 	- `head.next`被更改（改`n`条边），`last`与`head`向后移动，需要用临时变量存储原本的`head.next`节点
 	- `last`需要更新，当`head`向后移动一位，`last`也变成移动之前的`head`
 ```Java
@@ -111,9 +111,95 @@ class Solution {
 -------
 #### LC25 k个一组反转链表 HARD
 https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+- 主体思路：
+  - 模块化处理Hard问题，首先明确我们的任务可以分为分组和反转
+  - 分组：`k`个节点一组，找到每个组的`head`与`end`，按分好的组逐一遍历
+  - 反转：将每个组从`head`到`end`之间进行反转，可以参考LC206的反转链表模板
+- 细节：
+  - 分组问题的重点在于找到每个组的`end`，可以写一个`getEnd`的函数模板
+    - 当`head`不为`null`时，`k`个节点分为一组，从`head`开始走`k - 1`步后返回的节点为`end`
+    - 如果剩余节点不足`k`个则返回`null`
+    - 当`k`为`0`时，返回当前`head`节点为`end`
+    ```Java
+    // 向后走k-1步找到k个一组的组末尾节点
+    private ListNode getEnd(ListNode head, k) {
+        while (head != null){
+            k--;
+            if (k == 0) return head; // 或者break;
+            head = head.next;
+        }
+    }
+    return head;
+    ```
+  - 组内实现反转问题可以参考LC206的反转链表模板，但在此问题中的实现有流程区别。以`1→2→3→4→5，k = 2`的分组反转中间的`3→4`为例，可分为三步：
+    - 每组的组内反转只需要更改`k - 1`条边，而不是`k`条边，因为组内的`end`节点后无`null`
+    - 在组内反转之后，当前组`4→3`与前后被反转的组需要重新相连：
+      - 前一组的新结尾1（旧`head`）→ 当前组的新开头4（旧`end`）
+      - 当前组的新结尾3（旧`head`）→ 后一组的新开头5（旧`end`）
 
+  - 为防止第一个节点的`last`为`null`，建立一个保护节点，再开始分组遍历；同时，建立保护节点也取消了第一个分组位于头部的特性，在返回最终结果时，不需要再寻找第一组的旧`end`，而可以直接返回保护节点的`next`，即第一组的新`head`（旧`end`）
+  - 后一组的新`head`原本是`end.next`，但因为`end.next`在`reverseList`中被反转，所以需要提前把反转之前的`end.next`临时存储
+  - `last`和`head`各往后更新一组
+  - 边界问题：
+    - 访问节点的`next`之前，如果`getEnd`得到的是`null`，说明剩余节点不足`k`个，不需要反转，保持原有顺序
+    - 当`while`遍历到最后`head == end`时，`end(head)`仍要指向上一个`last`
 
+```Java
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        // 建立保护节点
+        ListNode protect = new ListNode(0, head);
+        // 分组，找到每一组的head与end，再每组逐一遍历
+        // 需要前一组的关系，last需要维护
+        ListNode last = protect; // 防止last为空，利用保护节点
+        while (head != null) {
+            ListNode end = getEnd(head, k);
 
+            if (end == null) break; 
+            ListNode next_group_head = end.next; // 提前存储后一组的head
+            // 在head和end之间进行组内反转
+            reverseList(head, end);
+            // 前一组的新结尾（旧head）→ 当前组的新开头（旧end）
+            last.next = end;
+            // 当前组的新结尾（旧head）→ 后一组的新开头（旧end）
+            head.next = next_group_head;
+
+            last = head; // 将上一组的结尾更新为当前组的新结尾
+            head = next_group_head; // 将当前组的开头更新为下一组的新开头
+
+        }
+        return protect.next;
+
+    }
+
+    // 向后走k-1步找到k个一组的组末尾节点
+    private ListNode getEnd(ListNode head, int k) {
+        while (head != null){
+            k--;
+            if (k == 0) return head; // 或者break;
+            head = head.next;
+        }
+        return head;
+    }
+
+    // 在head和end之间进行组内反转后与前后组重新连接
+    public void reverseList(ListNode head, ListNode end) {
+        if (head == end) return; // 如果k = 1，返回原有链表
+        // end后无null，组内需要更改k-1条边，遍历当前分组
+        ListNode last = head;
+        head = head.next;
+        while (head != end) {
+            ListNode next_head = head.next;
+            // 改一条边
+            head.next = last;
+            // last和head向后移动一位，last变为当前的head，head再更新
+            last = head;
+            head = next_head;
+        }
+        end.next = last; // 遍历到最后head == end，需要end指向上一个last
+    }
+}
+```
 
 
 
