@@ -1,6 +1,4 @@
-# W1 Summary & Homework
-
-## Homework
+# W1 Key Points Summary & Homework
 
 ### Array 数组
 -------
@@ -207,6 +205,74 @@ https://leetcode-cn.com/problems/linked-list-cycle/
 https://leetcode-cn.com/problems/linked-list-cycle-ii/
 
 -------
+### Stack Queue 栈 队列
+
+#### Reading 不同语言中所带的栈、队列、双端队列、优先队列library与使用方法
+
+C++: stack, queue, deque, priority queue
+
+<br/>
+
+Java: 
+- Stack
+- Queue, Deque可以用LinkedList实现
+- PriorityQueue
+
+<br/>
+
+Python
+- stack, queue, deque可以用list实现
+- 优先队列可以用heapq库
+
+-------
+#### LC20 有效的括号 Medium
+https://leetcode-cn.com/problems/valid-parentheses/
+- 与最近相关性有关的题目适合用栈来处理
+
+
+#### LC155 最小栈 Medium
+https://leetcode-cn.com/problems/min-stack/
+
+
+#### LC150 逆波兰表达式求值 Medium
+https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
+
+-------
+#### LC224 基本计算器 Hard
+
+
+-------
+### 前缀和
+
+设一维数组A与其对应的前缀和数组S，则有：
+
+![image](https://user-images.githubusercontent.com/86143164/122957868-ee44ea80-d3b4-11eb-858a-4cd041519176.png)
+
+如果计算数组A中从第`l`个数到第`r`个数的和，用暴力解法则需要对从`l`到`r`进行`for-loop`循环，每次的加法次数为`r-l+1`，最坏的时间复杂度为`o(n)`。而`o(1)`的计算子段和的方法为：
+
+![image](https://user-images.githubusercontent.com/86143164/122960714-44fef400-d3b6-11eb-9492-cd4c80fd848b.png)
+
+当数组A中元素皆为非负数时，前缀和数组S单调递增。
+
+-------
+#### LC1248 统计「优美子数组」 Medium
+https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
+- 如果某个连续子数组中恰好有`k`个奇数数字，这个子数组就是「优美子数组」，返回这个数组中「优美子数组」的数目
+- 主体思路：
+  - 将数组元素变奇偶性，对2取模，剩下1和0
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
