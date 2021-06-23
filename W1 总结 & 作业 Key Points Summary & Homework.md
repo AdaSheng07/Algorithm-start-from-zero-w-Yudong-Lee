@@ -1,7 +1,12 @@
 # W1 Key Points Summary & Homework
 
-### Quick link to homework（四选二）
-加一[Link](#lc66-加一-Easy)
+### Quick link to homework（四选三）
+加一[link](#lc66-加一-easy)  
+合并两个有序链表[link](#lc21-合并两个有序链表-easy-模板题)
+和为k的子数组[link](#lc560-和为k的子数组-medium)
+
+### 已Review课上例题
+
 
 
 -------
@@ -385,6 +390,36 @@ https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
           ans += count[s[i] - k]
   ```
 -------
+#### LC560 和为k的子数组 Medium
+https://leetcode-cn.com/problems/subarray-sum-equals-k/
+
+```C++
+// C++ 暴力i,j嵌套循环，最坏时间复杂度O(n^2)，超时
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        vector<int> prefix(nums.size() + 1, 0);
+
+        for (int i = 1; i <= nums.size(); i++){
+            prefix[i] = prefix[i - 1] + nums[i - 1];
+        }
+
+        int ans = 0;
+        for (int i = 0; i < prefix.size(); i++){
+            for(int j = i + 1; j < prefix.size(); j++){
+                if (prefix[j] - prefix[i] == k){
+                    ans += 1;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+
+
+-------
 #### LC304 二维区域和检索-矩阵不可变 Medium 模板题
 https://leetcode-cn.com/problems/range-sum-query-2d-immutable/
 
@@ -468,8 +503,6 @@ https://leetcode-cn.com/problems/maximum-subarray/
 - 主体思路：在前缀和问题中，首先改变为前缀和相减的形式
   - 解法一：前缀和+前缀最小值
     - 求出前缀和数组`S`，枚举其右端点`i`固定，避免`O(n^2)`的双层循环，需要找到在`i`之前的一个`j`使得`S[i] - S[j]`最大，即让`S[j]`最小，再对`S[j]`维护一个`S`的前缀最小值——预处理前若干个`S`数组元素的前缀最小值并存储，再枚举`i`来做`S[i] - S[j]`运算
-    - 
-  
 
 
 
