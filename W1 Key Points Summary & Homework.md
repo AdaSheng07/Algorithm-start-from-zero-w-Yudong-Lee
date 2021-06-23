@@ -245,10 +245,15 @@ https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
 
 -------
 #### LC224 基本计算器 Hard
+https://leetcode-cn.com/problems/basic-calculator/
+
+
 
 
 -------
 ### 前缀和
+
+#### 一维前缀和
 
 设一维数组A与其对应的前缀和数组S，则有：
 
@@ -260,13 +265,27 @@ https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
 
 当数组A中元素皆为非负数时，前缀和数组S单调递增。
 
+#### 二维前缀和
+
+设二维数组`A`与其对应的前缀和数组`S`，利用容斥原理，可知求二维前缀和的推导式：
+
+![image](https://user-images.githubusercontent.com/86143164/123026876-7a83fb80-d40f-11eb-8515-5fccdb176d30.png)
+
+如果求二维数组的子矩阵和，即以`(p,q)`为左上角，`(i,j)`为右下角的A的子矩阵中数的和，有：
+
+![image](https://user-images.githubusercontent.com/86143164/123027070-cc2c8600-d40f-11eb-963b-ca20149aaf9e.png)
+
+预处理`O(n^2)`，询问`O(1)`的时间复杂度，暴力方法询问也是`O(n^2)`
+
+
+
 -------
 #### LC1248 统计「优美子数组」 Medium
 https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
 - 如果某个连续子数组中恰好有`k`个奇数数字，这个子数组就是「优美子数组」，返回这个数组中「优美子数组」的数目
 - 主体思路：连续数组转变为前缀和问题
   - 将数组元素变奇偶性，对2取模，剩下1和0
-  - 子段里含有`k`个奇数数字就等价于子段里有`k`个1，即统计有多少连续子数组（子段）的和为`k`？
+  - 子段里含有`k`个奇数数字就等价于子段里有`k`个1，即统计有多少连续子数组（子段）的和为`k`
   - 暴力枚举法：将两个循环变量分离，当`r`在`1-n`在外层遍历，固定外层后`l`在`1-r`内层遍历，如果满足前缀和`s[r] - s[l-1] == k`的条件，统计数目加一，此方法最坏为`O(n)`
   - 在暴力枚举法基础上的优化：固定外层循环变量后，考虑内层满足的条件  
     对于每个`r(1~n)`，有几个`l(1~r)`，可以满足`s[r] - s[l-1] = k`  
@@ -275,7 +294,7 @@ https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
     对于每个`i(1~n)`，有几个`s[j], j(0~i-1)`等于`s[i] - k`  
     也就是统计数组`s`中，遍历`s[i]`后，等于`s[i] - k`的数的元素数量  
 - 细节：
-  - 将数组下标从`0~n-1`变为`1~n`，方便编程，再对2取模计算前缀和数组：
+  - 将数组`nums`下标从`0~n-1`变为`1~n`，方便编程，再对2取模计算前缀和数组：
   ```Python3
   # Python 3
   # 将下标从0～n-1变为1～n
@@ -287,7 +306,7 @@ https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
   for i in range(1, len(nums)):
       s[i] = s[i - 1] + nums[i] % 2
   ```
-  - 为了避免`for i for j`的`O(n^2)`双层循环，先利用`count`数组计数，统计s[i]中各取值元素的数量：
+  - 为了避免`for i for j`的最坏`O(n^2)`双层循环，先利用`count`数组计数，统计s[i]中各取值元素的数量：
   ```Python 3
   # Python 3
   # 对于数组s中，遍历s[i]后，等于s[i] - k的数的元素数量
@@ -296,7 +315,7 @@ https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
   for i in range(0, len(s)):
       count[s[i]] += 1
   ```
-  - 再对`i`进行遍历，在`count`数组中寻找值等于`s[i] - k`的元素数量，在访问数组下标前，增加对于边界的判断：
+  - 再对`i`进行遍历，在`count`数组中寻找值等于`s[i] - k`的元素数量；在访问数组下标前，增加对于边界的判断：
   ```Python3
   # Python3
   # 在count数组中寻找值等于s[i] - k的元素数量
@@ -305,8 +324,20 @@ https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
       if s[i] - k >= 0: # 注意下标越界问题
           ans += count[s[i] - k]
   ```
+-------
+#### LC304 二维区域和检索-矩阵不可变 Medium 模板题
+https://leetcode-cn.com/problems/range-sum-query-2d-immutable/
 
 
+-------
+### 差分
+
+设一维数组`A`，差分数组`B`，其中`B[1] = A[1], B[i] = A[i] - A[i-1] (2<=i<=n)`
+
+![image](https://user-images.githubusercontent.com/86143164/123039996-98f4f180-d425-11eb-8c55-0b49559618f4.png)
+
+
+差分数组`B`的前缀和数组就是原数组`A`
 
 
 
