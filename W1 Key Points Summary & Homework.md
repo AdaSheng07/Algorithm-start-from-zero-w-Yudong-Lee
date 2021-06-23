@@ -248,8 +248,6 @@ https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
 https://leetcode-cn.com/problems/basic-calculator/
 
 
-
-
 -------
 ### 前缀和
 
@@ -370,10 +368,35 @@ https://leetcode-cn.com/problems/corporate-flight-bookings/
 - 主体思路：裸题，可直接带入差分运算和前缀和运算来求得变化后的原数组，思考每一个操作对结果的影响，影响的两个位置———从哪里开始到哪里结束，累加影响即为求前缀和。以示例1为例，利用上面的差分数组变化模板：
   ![image](https://user-images.githubusercontent.com/86143164/123044437-38b57e00-d42c-11eb-925a-17958e2e4b36.png)
 - 细节：
-  - 考虑到对'n+1'处“溢出”的操作，差分数组的长度应该是0～n+1
-  - 差分模板：
-  
+  - 考虑到对`n+1`处“溢出”的操作，差分数组`diff`的长度应该是0～n+1
+  - 差分模板：在差分数组`diff`的`bookings[0]`处加`bookings[2]`，在`bookings[1] + 1`处减`bookings[2]`
+  ```C++
+  // C++
+  // 拆分每一组航班预订座位变化
+  int first = booking[0];
+  int last = booking[1]; 
+  int seats = booking[2]; 
+  // 差分模板实现：每一次操作对两个位置的影响
+  // 在差分数组的first处加seats，在(last + 1)处减seats
+  diff[first] += seats;
+  diff[last + 1] -= seats;
+  ```
+  - 遍历`i`进行对`diff`差分数组进行前缀和计算之后得到的`prefix`数组为1～n，需要再次将`prefix`移位到0～n-1
+  ```C++
+  // C++
+  // 初始化前缀和数组prefix
+  vector<int> prefix(n + 1, 0); // 前缀和数组0～n
 
+  // 遍历i对差分数组diff进行前缀和计算
+  for (int i = 1; i <= n; i++){
+      prefix[i] = prefix[i-1] + diff[i]; // 前缀和数组1～n
+  }
+
+  // 对前缀和数组prefix进行移位到0～n-1
+  for (int i = 1; i <= n; i++) prefix[i-1] = prefix[i]; // i-1边界无问题
+  prefix.pop_back(); // 删除最后一个空元素prefix[n]
+  return prefix;
+  ```
 
 -------
 
