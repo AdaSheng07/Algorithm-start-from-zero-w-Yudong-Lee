@@ -2,12 +2,17 @@
 
 ### Quick link to homework（四选三）
 加一[link](#lc66-加一-easy)  
-合并两个有序链表[link](#lc21-合并两个有序链表-easy-模板题)
+合并两个有序链表[link](#lc21-合并两个有序链表-easy-模板题)  
 和为k的子数组[link](#lc560-和为k的子数组-medium)
 
 ### 已Review课上例题
-
-
+合并两个有序数组[link](#lc88-合并两个有序数组-easy)  
+删除有序数组中的重复项[link](#lc26-删除有序数组中的重复项-easy)  
+移动零[link](#lc283-移动零-easy)  
+反转链表[link](#lc206-反转链表-easy)  
+k个一组反转链表[link](#lc25-k个一组反转链表-hard)  
+统计「优美子数组」 [link](#lc1248-统计优美子数组-medium)  
+航班预订统计[link](#lc1109-航班预订统计-medium-模板题)
 
 -------
 ### Array 数组
@@ -20,8 +25,6 @@ append(push back)  O(1)
 prepend(push front)  O(n) 
 
 #### 变长数组
-
-
 
 
 -------
