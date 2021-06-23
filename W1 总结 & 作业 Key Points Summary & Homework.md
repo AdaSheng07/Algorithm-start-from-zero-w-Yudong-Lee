@@ -141,9 +141,40 @@ public:
 -------
 #### LC21 合并两个有序链表 Easy 模板题
 https://leetcode-cn.com/problems/merge-two-sorted-lists/
-
-
-
+- 主体思想：两个有序链表各遍历一遍，比较`l1`与`l2`值`val`的大小，较小的一个放在新链表后面
+- 细节：
+  - 建立保护节点，同时将它赋给最开始的新链表的尾节点`end`；保护节点`protect`同时还能够方便最后返回新链表的开头，即`protect.next`
+  - 新链表的尾节点`end`随着新节点的插入向后移位更新
+  - 当`l1`或`l2`为空时，新链表的尾节点`end`指向有剩余节点的链表
+```Java
+// Java
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // 建立保护节点protect
+        ListNode protect = new ListNode();
+        // 新链表的end从protect开始向后
+        ListNode end = protect;
+        // 当l1和l2都不为空时，进行val比较
+        while (l1 != null && l2 != null){
+            if (l1.val < l2.val){
+                end.next = l1;
+                l1 = l1.next; // end下一个节点指向l1，l1向后移位更新
+            }else{
+                end.next = l2;
+                l2 = l2.next; // end下一个节点指向l2，l2向后移位更新
+            }
+            end = end.next; // 插入新节点后，end向后移位更新
+        }
+        // 当l1和l2至少有一个为空时，将end指向有剩余节点的链表
+        if (l1 != null) {
+            end.next = l1;
+        }else {
+            end.next = l2;
+        }
+        return protect.next; // 保护节点protect的next就是新链表的开头
+    }
+};
+```
 -------
 #### LC206 反转链表 Easy
 https://leetcode-cn.com/problems/reverse-linked-list/
