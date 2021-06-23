@@ -1,7 +1,10 @@
 # W1 Key Points Summary & Homework
 
-加一[Link to a header](#lc66-加一-Easy)
+### Quick link to homework（四选二）
+加一[Link](#lc66-加一-Easy)
 
+
+-------
 ### Array 数组
 
 #### 时间复杂度
