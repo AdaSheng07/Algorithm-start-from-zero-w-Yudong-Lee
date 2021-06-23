@@ -1,6 +1,11 @@
 # W1 Key Points Summary & Homework
 
 ### Array 数组
+
+
+
+
+
 -------
 #### LC88 合并两个有序数组 Easy
 https://leetcode-cn.com/problems/merge-sorted-array/description/
@@ -70,6 +75,45 @@ https://leetcode-cn.com/problems/move-zeroes/
 <br/>
 
 > LC26去重与LC283移动零这两题的实现思路是相同的：满足怎样的条件式即可对数组元素实行原地操作，同时考虑索引边界与原数组的被覆盖问题。
+
+-------
+
+#### LC66 加一 Easy
+https://leetcode-cn.com/problems/plus-one/
+- 主体思路：两种方法
+  1. 在数组基础上直接判断每一位的数字是否等于9，是否需要进位  
+  2. 将数组还原为x位数，加一后再逐位分离为单一数字，存入一个新数组  
+  方法2在处理加一时的进位问题看上去非常简单，但是将数组还原为数字需要`for-loop`，后期还需要判断加一后数字的位数，将它们的每一位分离，并利用`for-loop`将每位位数存入新数组。对比来看方法1在数组上直接操作，更为简便。
+- 细节：
+  - 如果`digits`的最后一个元素非9，则对最后一个元素加一后返回`digits`
+  - 如果`digits`的最后一个元素为9，则使最后一个元素为0，倒数第二个元素加一：
+    - 对倒数第二个元素需要做判定，如果为9，则使其为0，再向前进一位；再进行判定...以此类推
+```C++
+// C++ 完整代码
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        // 从最后一位开始判断是否为9和加一
+        for (int i = digits.size() - 1; i >= 0; i--) {
+            if (digits[i] != 9) {
+                digits[i] += 1;
+                return digits;
+            }
+            // 如果该位为9，加一则变为0，前一位进一
+            digits[i] = 0;
+        }
+        // 如果经过以上for-loop后仍然没有return
+        // 说明digits的每一位都是9
+        // 此时有溢出，需要建立一个首元素为1，其余皆为0新数组
+        vector<int> temp (digits.size() + 1, 0);
+        temp[0] = 1;
+        return temp;
+    }
+};
+// 最坏时间复杂度为O(n)
+```
+
+
 <br/>
 
 ### Linked List 链表
@@ -275,7 +319,7 @@ https://leetcode-cn.com/problems/basic-calculator/
 
 预处理`O(n^2)`，询问`O(1)`的时间复杂度，暴力方法询问也是`O(n^2)`
 
-
+前缀和算法不只局限于求和，也可以扩展到前缀最小值、最大值等问题。
 
 -------
 #### LC1248 统计「优美子数组」 Medium
@@ -394,12 +438,24 @@ https://leetcode-cn.com/problems/corporate-flight-bookings/
 
   // 对前缀和数组prefix进行移位到0～n-1
   for (int i = 1; i <= n; i++) prefix[i-1] = prefix[i]; // i-1边界无问题
-  prefix.pop_back(); // 删除最后一个空元素prefix[n]
+  prefix.pop_back(); // 全部移位后删除最后一个元素prefix[n]
   return prefix;
   ```
 
 -------
 
+#### LC53 最大子序和 Easy
+https://leetcode-cn.com/problems/maximum-subarray/
+- 找到整数数组`nums`中一个具有最大和的连续子数组（子数组最少包含一个元素）并返回其最大和
+- 主体思路：在前缀和问题中，首先改变为前缀和相减的形式
+  - 解法一：前缀和+前缀最小值
+    - 求出前缀和数组`S`，枚举其右端点`i`固定，避免`O(n^2)`的双层循环，需要找到在`i`之前的一个`j`使得`S[i] - S[j]`最大，即让`S[j]`最小，再对`S[j]`维护一个`S`的前缀最小值——预处理前若干个`S`数组元素的前缀最小值并存储，再枚举`i`来做`S[i] - S[j]`运算
+    - 
+  
+
+
+
+-------
 
 
 
