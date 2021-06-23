@@ -1,7 +1,17 @@
 # W1 Key Points Summary & Homework
 
+加一[Link to a header](#lc66-加一-Easy)
+
 ### Array 数组
 
+#### 时间复杂度
+lookup  O(1)  
+insert  O(n)  
+delete  O(n)  
+append(push back)  O(1)  
+prepend(push front)  O(n) 
+
+#### 变长数组
 
 
 
@@ -117,6 +127,12 @@ public:
 <br/>
 
 ### Linked List 链表
+-------
+#### LC21 合并两个有序链表 Easy 模板题
+https://leetcode-cn.com/problems/merge-two-sorted-lists/
+
+
+
 -------
 #### LC206 反转链表 Easy
 https://leetcode-cn.com/problems/reverse-linked-list/
@@ -278,7 +294,6 @@ Python
 #### LC20 有效的括号 Medium
 https://leetcode-cn.com/problems/valid-parentheses/
 - 与最近相关性有关的题目适合用栈来处理
-
 
 #### LC155 最小栈 Medium
 https://leetcode-cn.com/problems/min-stack/
