@@ -273,10 +273,38 @@ https://leetcode-cn.com/problems/count-number-of-nice-subarrays/
     对于每个`i(1~n)`，有几个`j(0~i-1)`，可以满足`s[i] - s[j] = k`  
     对于每个`i(1~n)`，有几个`j(0~i-1)`，可以满足`s[j] = s[i] - k`  
     对于每个`i(1~n)`，有几个`s[j], j(0~i-1)`等于`s[i] - k`  
-    也就是统计数组`s`中，遍历`s[i]`后，等于`s[i] - k`的数的数量  
+    也就是统计数组`s`中，遍历`s[i]`后，等于`s[i] - k`的数的元素数量  
 - 细节：
-  - 将数组下标从`0~n-1`变为`1~n`
-
+  - 将数组下标从`0~n-1`变为`1~n`，方便编程，再对2取模计算前缀和数组：
+  ```Python3
+  # Python 3
+  # 将下标从0～n-1变为1～n
+  nums = [0] + nums
+  # 初始化前缀和数组s
+  s = [0] * len(nums)
+  # 对nums中的元素对2取模，奇偶性，变为0与1
+  # 再求取前缀和数组s
+  for i in range(1, len(nums)):
+      s[i] = s[i - 1] + nums[i] % 2
+  ```
+  - 为了避免`for i for j`的`O(n^2)`双层循环，先利用`count`数组计数，统计s[i]中各取值元素的数量：
+  ```Python 3
+  # Python 3
+  # 对于数组s中，遍历s[i]后，等于s[i] - k的数的元素数量
+  # 初始化一个计数数组count，先统计s[i]各元素数量
+  count = [0] * len(s)
+  for i in range(0, len(s)):
+      count[s[i]] += 1
+  ```
+  - 再对`i`进行遍历，在`count`数组中寻找值等于`s[i] - k`的元素数量，在访问数组下标前，增加对于边界的判断：
+  ```Python3
+  # Python3
+  # 在count数组中寻找值等于s[i] - k的元素数量
+  ans = 0
+  for i in range(0, len(nums)):
+      if s[i] - k >= 0: # 注意下标越界问题
+          ans += count[s[i] - k]
+  ```
 
 
 
