@@ -3,9 +3,9 @@ class Solution {
 public:
     int findShortestSubArray(vector<int>& nums) {
 
-        // 以hashmap将一个数组映射到一个整数
+        // 以hashmap将数组元素映射到一个数组
         /* 这里在vector中记录每个元素出现位置的最左和最右
-           映射到的整数是每个元素在nums中的出现次数*/
+           整数是每个元素在nums中的出现次数*/
         unordered_map<int, vector<int>> map;
         // 初始化数组的度
         int degree = 0;
