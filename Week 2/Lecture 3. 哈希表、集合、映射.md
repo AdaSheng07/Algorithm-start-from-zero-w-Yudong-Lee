@@ -207,3 +207,29 @@ it->second;              // same as (*it).second  (the mapped value)
 
 [实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20146.%20LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%20%E4%BB%A3%E7%A0%81.md)
 
+-------
+
+#### 作业：子域名访问计数
+
+[LeetCode 811. 子域名访问计数](https://leetcode-cn.com/problems/subdomain-visit-count/)
+
+解题思路
+![image](https://user-images.githubusercontent.com/86143164/123989515-8d906000-d9fb-11eb-85fc-cfe787e15092.png)
+
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20811.%20%E5%AD%90%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E8%AE%A1%E6%95%B0%20Python3%20%E4%BB%A3%E7%A0%81.md)
+
+-------
+
+#### 作业：数组的度
+
+[LeetCode 697. 数组的度](https://leetcode-cn.com/problems/degree-of-an-array/)
+
+[解题思路与代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20697.%20%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6%20C%2B%2B%20%E4%BB%A3%E7%A0%81.md)
+
+
+
+
+
+
+
+
