@@ -151,8 +151,59 @@ it->second;              // same as (*it).second  (the mapped value)
    for i = 1~,-1
      search if (target - nums[i]) in nums[0, 1,..., i-1]
    ```
- - 一边
+ - 一边对`i`遍历，一边在map中插入`nums[i] = i`，维护对`nums[i]`的映射；同时，在`if`后进行插入操作避免了`nums[i]`的重复使用
 
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%201.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.md) 
 
+-------
 
+[LeetCode 874. 模拟行走机器人](https://leetcode-cn.com/problems/walking-robot-simulation/)
+
+- 主体思路：暴力解法，重点是解决障碍物问题以及左转右转90度问题
+- 细节：
+  - 判断障碍的两种方法：
+    - 方案1: 将整数数组转变为string
+    - 方案2: 将(x, y)看作进制数的第1和第0位，防止为负先平移坐标系再换算，转变为大整数long long
+  - 左转右转问题可利用方向数组指导(x, y)的移动方向：  
+    向北移动1时，x不变，y加一  
+    向东移动1时，x加一，y不变  
+    向南移动1时，x不变，y减一  
+    向西移动1时，x减一，y不变  
+
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20874.%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA.md)
+
+-------
+
+[LeetCode 49. 字母异位词分组](https://leetcode-cn.com/problems/group-anagrams/)
+
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2049.%20%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84%20%E4%BB%A3%E7%A0%81.md)
+
+-------
+
+[LeetCode 30. 串联所有单词的子串](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/)
+
+- 如果用暴力法，假设`words`中有`k`个单词，考虑`words`中所有的排列顺序，时间复杂度为`O(k!)`爆炸
+- 主体思路： 
+  - 寻找`s`的子串：哪些是`words`的串联？
+  - 寻找子串，最直接的方法是for-loop循环枚举，枚举完毕后，问题变为：给定一个string，判断它是否是`words`的串联，即string内部是否包含与`words`相同的单词
+  - 也就是，找到一些单词，排列顺序无所谓，只要包含与`words`相同的内容
+  - 参考49. 字母异位词分组的理念
+
+[实现代码]
+
+-------
+
+#### 作业：实现一个LRU
+
+[LeetCode 146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+
+![image](https://user-images.githubusercontent.com/86143164/123986844-41dcb700-d9f9-11eb-9e4e-c81a926029fd.png)
+
+- 为什么用链表？链表是在一组数的中间快速删除/插入元素的数据结构
+- 利用哈希表+双向链表，解决链表不能快速查询的缺点：双向链表用于按时间顺序保存数据，哈希表用于把key映射到链表节点
+- `O(1)`访问：直接检查哈希表
+- `O(1)`更新：通过哈希表定位到链表节点，如果存在，删除此节点并在链表表头重新插入
+- `O(1)`删除：注意边界问题，如果超出容量上限，总是淘汰链表的尾节点，同时在hashmap中删除对应的key-value pair
+
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20146.%20LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%20%E4%BB%A3%E7%A0%81.md)
 
