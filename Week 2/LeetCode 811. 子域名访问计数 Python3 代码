@@ -1,4 +1,4 @@
-
+```Python3
 # Python3
 class Solution:
     def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
@@ -19,5 +19,5 @@ class Solution:
         
         # 格式化输出结果
         return ["{} {}".format(count, segment) for segment, count in ans.items()]
-
+```
 
