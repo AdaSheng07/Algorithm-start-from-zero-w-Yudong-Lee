@@ -153,7 +153,7 @@ it->second;              // same as (*it).second  (the mapped value)
    ```
  - 一边对`i`遍历，一边在map中插入`nums[i] = i`，维护对`nums[i]`的映射；同时，在`if`后进行插入操作避免了`nums[i]`的重复使用
 
-[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%201.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.md) 
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%201.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.md) 
 
 -------
 
@@ -170,7 +170,7 @@ it->second;              // same as (*it).second  (the mapped value)
     向南移动1时，x不变，y减一  
     向西移动1时，x减一，y不变  
 
-[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20874.%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA.md)
+[实现代码](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20874.%20%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA.md)
 
 -------
 
