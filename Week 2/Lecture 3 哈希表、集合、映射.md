@@ -142,7 +142,16 @@ it->second;              // same as (*it).second  (the mapped value)
 
 [LeetCode 1. 两数之和](https://leetcode-cn.com/problems/two-sum/description/)  
 
-- 给定目标值`target`，求解求和
+- 给定目标值`target`，求解求和的元素组合，暴力法为典型的两层for-loop循环返回数组索引值
+- 主体思路：有一个`nums[i]`，寻找一个`j`使得`nums[i] = nums[j] = target`，即在`nums`中寻找`target - nums[i]`
+- 细节：
+ - 只能在除了`nums[i]`本身的其余元素中寻找，同一个元素不可重复出现
+ - 题目对答案的顺序没有要求，可以设置`j < i`，有：
+   ```
+   for i = 1~,-1
+     search if (target - nums[i]) in nums[0, 1,..., i-1]
+   ```
+ - 一边
 
 
 
