@@ -26,7 +26,7 @@ class Solution {
         set.remove(set.size() - 1); // 全局变量重置，删除上一次执行的结果
     }
         
-    // 两个全局变量，属于所有函数体
+    // 四个全局变量，属于所有函数体
     private List<List<Integer>> ans;
     private List<Integer> set;
     private int n;
