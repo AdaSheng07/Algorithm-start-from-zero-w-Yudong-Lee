@@ -64,7 +64,23 @@ return result;
 
 #### 递归问题的三个基本实现形式
 
-子集
+[子集](https://leetcode-cn.com/problems/subsets/)  
+- 子集问题是一个指数型的问题，子集个数一定是`2^n`：每个元素都有选/不选两种可能，一共`n`个元素，即一共有`2^n`种方案
+- 如果用暴力枚举法：`n`层循环，每层选/不选循环
+- 用递归来描述数组元素选/不选的可能
+  - 答案数组为全函数体共享的全局变量，构成一个数组`set`，`set`构成答案数组中的元素，也是全函数体共享的全局变量，随着递归不断被修改更新
+  - 如果当前位置`index`不选，考虑下一个数选/不选，`index + 1`
+  - 如果当前位置`index`选，将`nums[index]`放入数组`set`，再考虑下一个数选/不选，`index + 1`，递归结束时还原全局变量`set`，删除`set`中最后一个元素
+  - 终止条件：递归从`index = 0`开始枚举选/不选，当`index = nums.length`，递归终止，同时将`set`结果拷贝进答案数组
+
+[代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2078.%20%E5%AD%90%E9%9B%86.md)  
+*可在每次递归开始前打印`index`和`set`观察回溯
+
+![image](https://user-images.githubusercontent.com/86143164/124060499-c19d6c80-da5f-11eb-918b-57e3dba1cb53.png) 
+
+时间复杂度`O(2^n)`
+最后一层结果为`2^n`个，所有层共有`2^n + 2^(n-1) + ... + 2 + 1 = 2^(n+1) - 1 <= 2^(n+1) = (2^n)·2`，即`O(2^n)`
+
 
 组合
 
