@@ -108,14 +108,9 @@ if (set.size() > k || set.size() + n - num + 1 < k) return;
 
     ![image](https://user-images.githubusercontent.com/86143164/124092403-641e1580-da89-11eb-8b04-93e479affec8.png)
 
-- 可以将方案2看作一个剪枝问题（pruning），仍然以`n = 5, k = 2`为例：
+- 可以将方案2看作一个剪枝问题（pruning），仍然以`n = 4, k = 2`为例：
 
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/86143164/124148202-03f79580-dac2-11eb-9471-736ad4f2031a.png)
 
 -------
 
