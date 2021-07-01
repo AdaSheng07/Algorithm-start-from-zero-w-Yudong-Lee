@@ -76,7 +76,7 @@ return result;
 [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2078.%20%E5%AD%90%E9%9B%86.md)  
 *可在每次递归开始前打印`index`和`set`观察回溯
 
-![image](https://user-images.githubusercontent.com/86143164/124060499-c19d6c80-da5f-11eb-918b-57e3dba1cb53.png) 
+![image](https://user-images.githubusercontent.com/86143164/124070162-f6192480-da6f-11eb-814f-55b89218dcdc.png)
 
 时间复杂度`O(2^n)`
 最后一层结果为`2^n`个，所有层共有`2^n + 2^(n-1) + ... + 2 + 1 = 2^(n+1) - 1 <= 2^(n+1) = (2^n)·2`，即`O(2^n)`
