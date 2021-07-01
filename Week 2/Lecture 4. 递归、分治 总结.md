@@ -73,8 +73,8 @@ return result;
   - 如果当前位置`index`选，将`nums[index]`放入数组`set`，再考虑下一个数选/不选，`index + 1`，递归结束时还原全局变量`set`，删除`set`中最后一个元素
   - 终止条件：递归从`index = 0`开始枚举选/不选，当`index = nums.length`，递归终止，同时将`set`结果拷贝进答案数组
 
-[代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2078.%20%E5%AD%90%E9%9B%86.md)  
-*可在每次递归开始前打印`index`和`set`观察回溯
+    [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2078.%20%E5%AD%90%E9%9B%86.md)  
+    *可在每次递归开始前打印`index`和`set`观察回溯
 
 ![image](https://user-images.githubusercontent.com/86143164/124070162-f6192480-da6f-11eb-814f-55b89218dcdc.png)
 
@@ -90,18 +90,27 @@ return result;
 - 递归的第二个终止条件是当`set`中的元素数为k
 - 所以整合递归的终止条件为：`num == n + 1`和`set.size() == k`，两条件均满足时，将当前的`set`拷贝进答案数组`ans`；只满足`num == n + 1`时，不拷贝`set`，直接进入下一次递归。以此方法实现时间复杂度仍然是`O(2^n)`，速度较慢
 
-[方案1 代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2077.%20%E7%BB%84%E5%90%88%20%E6%96%B9%E6%A1%881.md)
+    [方案1 代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2077.%20%E7%BB%84%E5%90%88%20%E6%96%B9%E6%A1%881.md)
 
 **方案2:**  
 - 增加一个提前判断排除不合法情况，以`n = 4, k = 2`为例：
   - 如果在递归枚举未终止时，`set`中的元素数量已经超过`k = 2`个，可退出此次递归枚举；
   - 或者，即使把剩下的所有元素全选`set`中的元素数量也不足`k = 2`个，也可以退出此次递归枚举
+```Java
+if (set.size() > k || set.size() + n - num + 1 < k) return;
+```
 - 时间复杂度：
-  每种方案只算一次，不会有多余情况，只要一个分支在经过判断后能向下走，一定会至少产生一个答案，不合法的结果会在判断的时候立刻被删除。
-  此
-- 时间复杂度：每种方案只算一次，不会有多余情况，只要一个分支在经过判断后能向下走，一定会至少产生一个答案，不合法的结果会在判断的时候立刻被删除。
 
-![image](https://user-images.githubusercontent.com/86143164/124091189-25d42680-da88-11eb-8347-757a58970c7c.png)
+    ![image](https://user-images.githubusercontent.com/86143164/124091189-25d42680-da88-11eb-8347-757a58970c7c.png)
+
+  - 每种方案只算一次，不会有多余情况，只要一个分支在经过判断后能向下走，一定会至少产生一个答案，不合法的结果会在判断的时候立刻被删除。
+  - 根据二项式定理，方案2时间复杂度一定小于方案1。
+
+    ![image](https://user-images.githubusercontent.com/86143164/124092403-641e1580-da89-11eb-8b04-93e479affec8.png)
+
+- 可以将方案2看作一个剪枝问题（pruning），仍然以`n = 5, k = 2`为例：
+
+
 
 
 
