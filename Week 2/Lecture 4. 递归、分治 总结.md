@@ -75,12 +75,12 @@ return result;
 
     [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2078.%20%E5%AD%90%E9%9B%86.md)  
     *可在每次递归开始前打印`index`和`set`观察回溯
-    
-    [子集递归模板](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/%E5%AD%90%E9%9B%86%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF.md)
 
 ![image](https://user-images.githubusercontent.com/86143164/124070162-f6192480-da6f-11eb-814f-55b89218dcdc.png)
 
-时间复杂度：最后一层结果为`2^n`个，所有层共有`2^n + 2^(n-1) + ... + 2 + 1 = 2^(n+1) - 1 <= 2^(n+1) = (2^n)·2`，即`O(2^n)`
+时间复杂度：最后一层结果为`2^n`个，所有层共有`2^n + 2^(n-1) + ... + 2 + 1 = 2^(n+1) - 1 <= 2^(n+1) = (2^n)·2`，即`O(2^n)`  
+<br/>
+    [子集递归模板](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/%E5%AD%90%E9%9B%86%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF.md)
 
 -------
 
@@ -113,6 +113,9 @@ if (set.size() > k || set.size() + n - num + 1 < k) return;
 - 可以将方案2看作一个剪枝问题（pruning），仍然以`n = 4, k = 2`为例：
 
 ![image](https://user-images.githubusercontent.com/86143164/124148202-03f79580-dac2-11eb-9471-736ad4f2031a.png)
+
+
+[组合递归模板](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/%E7%BB%84%E5%90%88%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF.md)
 
 -------
 
