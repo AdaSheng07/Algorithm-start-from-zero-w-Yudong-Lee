@@ -75,6 +75,8 @@ return result;
 
     [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2078.%20%E5%AD%90%E9%9B%86.md)  
     *可在每次递归开始前打印`index`和`set`观察回溯
+    
+    [子集递归模板](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/%E5%AD%90%E9%9B%86%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF.md)
 
 ![image](https://user-images.githubusercontent.com/86143164/124070162-f6192480-da6f-11eb-814f-55b89218dcdc.png)
 
@@ -91,6 +93,8 @@ return result;
 - 所以整合递归的终止条件为：`num == n + 1`和`set.size() == k`，两条件均满足时，将当前的`set`拷贝进答案数组`ans`；只满足`num == n + 1`时，不拷贝`set`，直接进入下一次递归。以此方法实现时间复杂度仍然是`O(2^n)`，速度较慢
 
     [方案1 代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2077.%20%E7%BB%84%E5%90%88%20%E6%96%B9%E6%A1%881.md)
+    
+    [组合递归模板](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/%E7%BB%84%E5%90%88%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF.md)
 
 **方案2:**  
 - 增加一个提前判断排除不合法情况，以`n = 4, k = 2`为例：
