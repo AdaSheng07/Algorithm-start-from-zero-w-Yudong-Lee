@@ -64,6 +64,11 @@ return result;
 
 #### 递归问题的三个基本实现形式
 
+递归实现的暴力搜索：
+
+![image](https://user-images.githubusercontent.com/86143164/124345946-9c9b2c00-dc0e-11eb-9cac-868f2a51eadc.png)
+
+
 [子集](https://leetcode-cn.com/problems/subsets/)  
 - 子集问题是一个指数型的问题，子集个数一定是`2^n`：每个元素都有选/不选两种可能，一共`n`个元素，即一共有`2^n`种方案
 - 如果用暴力枚举法：`n`层循环，每层选/不选循环
@@ -119,11 +124,22 @@ if (set.size() > k || set.size() + n - num + 1 < k) return;
 
 -------
 
-全排列
+[全排列](https://leetcode-cn.com/problems/permutations/)
+
+- 不是考虑每个数选/不选，而是考虑下一个数放哪一个还没用过的数，所以需要维护一个“还未用过的数”的信息
+- 递归的终止条件是每个位置都已经被填满，将已排列好的数组拷贝到答案数组中，再删除存放排列的数组的最后一个元素，将该元素的使用状态重置
+- 时间复杂度：`O(n!)`
+
+    [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2046.%20%E5%85%A8%E6%8E%92%E5%88%97.md)
+
+全排列的回溯图解
+
+![image](https://user-images.githubusercontent.com/86143164/124352203-a41ffc80-dc31-11eb-99b3-4be0c2971f1b.png)
 
 
+[排列递归模板](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/%E6%8E%92%E5%88%97%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF.md)
 
-
+-------
 
 
 
