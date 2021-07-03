@@ -132,7 +132,7 @@ if (set.size() > k || set.size() + n - num + 1 < k) return;
 
     [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2046.%20%E5%85%A8%E6%8E%92%E5%88%97.md)
 
-全排列的回溯图解
+全排列的回溯图解（以`nums = [1,2,3]`为例）：
 
 ![image](https://user-images.githubusercontent.com/86143164/124352203-a41ffc80-dc31-11eb-99b3-4be0c2971f1b.png)
 
@@ -141,6 +141,31 @@ if (set.size() > k || set.size() + n - num + 1 < k) return;
 
 -------
 
+### 树
+
+![image](https://user-images.githubusercontent.com/86143164/124353986-48a73c00-dc3c-11eb-85cf-4f989c300bb4.png)
+
+-------
+
+[翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/)  
+
+- 将每棵子树的内部都进行翻转，递归的子问题就是翻转一棵树的左和右
+- 终止条件：达到边界叶子结点，无子树。当左右节点中有一个为`null`时，仍然可以翻转，只有当`root`已经无子树时，递归才达到边界  
+
+[代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%20226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91.md)
+
+-------
+
+[验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/)  
+
+- 二叉搜索树特征：节点的左子树只包含小于当前节点的数；节点的右子树只包含大于当前节点的数；所有左子树和右子树自身必须也是二叉搜索树
+- 主体思路：如果遍历左右子树进行大小判断，效率太低，不妨改为：
+  - 节点的左子树只包含小于当前节点的数 -> 左子树的最大节点比根小
+  - 节点的右子树只包含大于当前节点的数 -> 右子树的最小节点比根大
+- 对于一个子树的三个任务：
+  - 求左子树的最大节点
+  - 求右子树的最小节点
+  - 验证是否是二叉搜索树
 
 
 
