@@ -167,6 +167,30 @@ if (set.size() > k || set.size() + n - num + 1 < k) return;
   - 求右子树的最小节点
   - 验证是否是二叉搜索树
 
+[代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%202/LeetCode%2098.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.md)
+
+-------
+
+### 分治
+
+分治，指“分而治之”，就是把原问题划分成若干个同类子问题，分别解决后，再把结果合并起来。
+
+关键点：
+- 原问题和各子问题都是重复的（同类的）
+- 除了向下递归问题，还要向上合并结果
+- 一般用递归实现分治算法
+
+![image](https://user-images.githubusercontent.com/86143164/124373983-e39a2780-dcc9-11eb-91ce-7ddb98d00b7d.png)
+
+-------
+
+[Pow(x, n)](https://leetcode-cn.com/problems/powx-n/)
+
+
+-------
+
+[括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
+
 
 
 
