@@ -95,21 +95,27 @@ class TreeNode:
 
 **广度优先遍历**
 
+利用队列进行层序遍历：
+- 当队列不为空时，取队头，对队头进行扩展（沿队头的node向下走一层）
+- 走队头的node所有出边，将其子节点从队的尾部放入
+- 继续循环
 
-**深度优先遍历**
+
+![image](https://user-images.githubusercontent.com/86143164/124498954-c8c1d300-ddef-11eb-937c-573632e112d7.png)
+
+
+[N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)
 
 
 -------
 
-### Examples
+**深度优先遍历**
+
 
 [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
 
 
 [N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/)
-
-
-[N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)
 
 
 [二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
