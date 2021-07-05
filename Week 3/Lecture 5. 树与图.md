@@ -1,9 +1,7 @@
 ## 树与图
 
-### 树、二叉树、树的遍历、树的序列化
 
-#### 树（Tree）
-
+### 树（Tree）
 
 ![image](https://user-images.githubusercontent.com/86143164/124374215-fe6d9b80-dccb-11eb-89f7-c925a1127f93.png)
 
@@ -39,21 +37,56 @@ class TreeNode:
         self.left, self.right = None, None
 ```
 
+-------
 
-#### 二叉树（Binary Tree）
+### 二叉树（Binary Tree）
 
+二叉树：一棵树任何一个结点的孩子结点的数量都不超过两个
+
+**满二叉树**
+
+
+![image](https://user-images.githubusercontent.com/86143164/124484327-e2f2b580-dddd-11eb-8752-28352b893968.png)
+
+
+- 除最后一层无任何子节点外，每一层上的所有结点都有两个子结点二叉树
+- 一个二叉树，每一个层的结点数都达到最大值
+- 如果一个满二叉树的层数为K，那么它的结点总数就是(2^k) -1 
+
+**完全二叉树**
+
+![image](https://user-images.githubusercontent.com/86143164/124484207-bdfe4280-dddd-11eb-9281-01669b3d45ce.png)
+
+- 对于深度为K的，有n个结点的二叉树，当且仅当其每一个结点都与深度为K的满二叉树中编号从1至n的结点一一对应时称之为完全二叉树
+- 若设二叉树的深度为h，除第h层外，其它各层 (1～h-1) 的结点数都达到最大个数，第h层所有的结点都连续集中在最左边
+- 利用完全二叉树的性质，可以存储一个1~n的连续元素的数组
+    ![image](https://user-images.githubusercontent.com/86143164/124485184-e5a1da80-ddde-11eb-82f8-c08a3f6bedb5.png)
 
 **二叉树的遍历**
 
-前序遍历（Pre-order）
+  利用递归进行二叉树的前序、中序、后序遍历，这里要理解递归的本质是自我调用，理解一层是怎样实现的，而不要总想看到底的重复问题。
 
-中序遍历（In-order）
+![image](https://user-images.githubusercontent.com/86143164/124486795-8c3aab00-dde0-11eb-98c7-ca5f2da563d2.png)
 
-后序遍历（Post-order）
+- 前序遍历（Pre-order）：根-左子树-右子树  
 
-层次序
+![image](https://user-images.githubusercontent.com/86143164/124489866-0a4c8100-dde4-11eb-8332-4af3de3915ef.png)
 
-#### 树的遍历
+- 中序遍历（In-order）：左子树-根-右子树  
+
+![image](https://user-images.githubusercontent.com/86143164/124490381-9a8ac600-dde4-11eb-87af-1d8226e248f0.png)
+
+- 后序遍历（Post-order）：左子树-右子树-根  
+
+![image](https://user-images.githubusercontent.com/86143164/124495661-f8221100-ddea-11eb-9624-8cb7f3dbce6a.png)
+
+这三种遍历中，后序遍历用得较少，前序、中序和后序遍历都为深度优先遍历（DFS），但前序遍历最为典型。中序遍历是有序的，在二叉搜索树中会有应用。
+
+- 层次序：不需要递归，按照树的层次进行遍历为ABCDEFGHIJ
+
+-------
+
+### 树的遍历
 
 前序遍历、中序遍历和后序遍历一般用**递归**来求，树的前序遍历又称树的**深度优先遍历**  
 层次序一般借助**队列**来求，树的层序遍历又称树的**广度优先遍历**
@@ -67,6 +100,8 @@ class TreeNode:
 
 
 -------
+
+### Examples
 
 [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
 
@@ -152,7 +187,7 @@ N个结点N条边
 
 -------
 
-#### 图的遍历
+### 图的遍历
 
 **深度优先遍历**
 
