@@ -100,6 +100,7 @@ class TreeNode:
 **基环树（pseudotree / unicyclic graph）**
 
 向一棵树添加一条边，形成一个环  
+N个结点N条边
 
 ![image](https://user-images.githubusercontent.com/86143164/124374745-80f85a00-dcd0-11eb-85b6-839be77623d3.png)
 
@@ -108,17 +109,62 @@ class TreeNode:
 
 ### 图、图的遍历
 
-**图**
+#### 图
+
+![image](https://user-images.githubusercontent.com/86143164/124423732-596cc480-dd98-11eb-81e8-d5bce7b23467.png)
 
 
 **链表、树、图的关系**
 
 链表是特殊化的树  
 树是特殊化的图  
+- N个点N-1条边的连通无向图——树（N-1为无环的最多边数）
+- N个点N条边的连通无向图——基环树
 
-**图的存储*
-*
+**图的存储**
 
+- 图的矩阵、数组与邻接表表示
+
+![image](https://user-images.githubusercontent.com/86143164/124424830-465af400-dd9a-11eb-869b-6b0d2501f497.png)
+
+
+- 在图中加一条边：将矩阵对应位置由0改1，出边数组对应更新，邻接表在表头插入（效率高，无需遍历全链表）新结点
+
+![image](https://user-images.githubusercontent.com/86143164/124425725-8c648780-dd9b-11eb-99e7-8f3b54ff0022.png)
+
+
+无向图如何存储？
+
+将无向图看作正反两条边的有向图：
+
+![image](https://user-images.githubusercontent.com/86143164/124426447-a2267c80-dd9c-11eb-8a40-4f862135a26a.png)
+
+所以也可以将无向图称为**双向图**，所有的图都是有向图。
+
+如果边有长度，将邻接矩阵内的数存为长度权值，数组中的元素更新为`[Node, Length]`的`List<List[Node, Int]>`，或`pair`，或`class`。
+
+时间复杂度：邻接矩阵始终是`O(n^2)`，出边数组与邻接表是`O(n + m)`
+
+
+**图的存储 代码实现**
+
+![image](https://user-images.githubusercontent.com/86143164/124427545-1877ae80-dd9e-11eb-92e9-f46865fee6c6.png)
+
+-------
+
+#### 图的遍历
+
+**深度优先遍历**
+
+![image](https://user-images.githubusercontent.com/86143164/124428095-d26f1a80-dd9e-11eb-8eaa-3340bcce7f12.png)
+
+
+[课程表](https://leetcode-cn.com/problems/course-schedule/)
+
+
+
+
+**广度优先遍历**
 
 
 
