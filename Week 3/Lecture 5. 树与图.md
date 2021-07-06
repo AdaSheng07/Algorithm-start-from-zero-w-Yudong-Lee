@@ -93,7 +93,7 @@ class TreeNode:
 
 ![image](https://user-images.githubusercontent.com/86143164/124374415-96b85000-dccd-11eb-9f12-715e718aea59.png)
 
-**广度优先遍历**
+#### 广度优先遍历
 
 利用队列进行层序遍历：
 - 当队列不为空时，取队头，对队头进行扩展（沿队头的node向下走一层）
@@ -114,11 +114,11 @@ class TreeNode:
   - 在队列queue中存储一个Node与对应层序数的pair，比如`[[1, 0], [3, 1], [2, 1], [4, 1], [5, 2], [6, 2]]`
   - 层序遍历：取队头Node，pop出队列，Node扩展，深度加一
   - 最后输出的结果sequence按照第0，1，2，...位推入N叉树对应的每层node.val  
-    [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%20429.%20N%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.md)
+  - [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%20429.%20N%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.md)
     
 -------
 
-**深度优先遍历**
+#### 深度优先遍历
 
 
 **Example 1**: [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
@@ -147,15 +147,29 @@ class TreeNode:
 
 **Example 3**: [二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
 
+![image](https://user-images.githubusercontent.com/86143164/124564072-44189880-de73-11eb-8f69-964a2d0ef7e3.png)
+
+- 序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据
+- 将给定的二叉树转换成一个序列便于储存，并且能通过这个序列来复原一棵树
+- 假设用前序遍历将二叉树转换成一个序列`[1, 2, null, null, 3, 4, null, null, 5, null, null]`，encode的结果应该为一个`string`：`"1 2 null null 3 4 null null 5 null null"`
+- 再针对这个`string`进行decode解码，通过递归还原这个二叉树，还原的顺序与遍历顺序一致：先根再左最后右
 
 <br/>
 
 **Example 4**: [从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
+![image](https://user-images.githubusercontent.com/86143164/124567578-b76fd980-de76-11eb-952e-c4850aeb2689.png)
+
+- 通过前序遍历一定可以确定root是`preorder`的第一个元素，再通过中序遍历来确定左子树和右子树的分界信息，在`inorder`中寻找root的位置作为分界点，就可以将左子树和右子树确定大小并分开
+- 利用python可以将preorder和inorder数组直接截取，而C++和Java则需要拷贝数组，可以单独存储数组下标来分离左子树和右子树，存储`inorder`中root的位置
+- 在一层递归中，利用`inorder`中root的位置分别求出左子树的size和右子树的size，再利用所得的左子树size和右子树size分离得到当前root的两个子树，以进入下一层递归
+- 递归的终止条件：当遍历完`preorder`中`root`之前所有的结点，返回`null`
+
+
 
 <br/>
 
-**Homework**: [从中序与后续遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+**Homework**: [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
 
 ***从前序与后序遍历序列，并不能唯一确定一棵二叉树**
