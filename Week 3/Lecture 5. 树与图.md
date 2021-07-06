@@ -82,7 +82,7 @@ class TreeNode:
 
 这三种遍历中，后序遍历用得较少，前序、中序和后序遍历都为深度优先遍历（DFS），但前序遍历最为典型。中序遍历是有序的，在二叉搜索树中会有应用。
 
-- 层次序：不需要递归，按照树的层次进行遍历为ABCDEFGHIJ
+- 层次序（Level-order）：不需要递归，按照树的层次进行遍历为ABCDEFGHIJ
 
 -------
 
@@ -100,34 +100,65 @@ class TreeNode:
 - 走队头的node所有出边，将其子节点从队的尾部放入
 - 继续循环
 
-
 ![image](https://user-images.githubusercontent.com/86143164/124498954-c8c1d300-ddef-11eb-937c-573632e112d7.png)
 
 
-[N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)
+**Example：**  [N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)
 
+![image](https://user-images.githubusercontent.com/86143164/124546709-a23a8100-de5d-11eb-8824-4c88bf787194.png)
 
+  **方案1**
+  - 存一个hashmap，将N叉树的每个Node映射到对应的层序数中
+  
+  **方案2**
+  - 在队列queue中存储一个Node与对应层序数的pair，比如`[[1, 0], [3, 1], [2, 1], [4, 1], [5, 2], [6, 2]]`
+  - 层序遍历：取队头Node，pop出队列，Node扩展，深度加一
+  - 最后输出的结果sequence按照第0，1，2，...位推入N叉树对应的每层node.val  
+    [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%20429.%20N%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.md)
+    
 -------
 
 **深度优先遍历**
 
 
-[二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+**Example 1**: [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+
+- 中序遍历：左子树-根-右子树，最后返回一个存储整数序列的数组
+- 如果按照中序遍历的过程，对每个结点进行递归，将左-根-右的结果合并后返回一个数组，合并结果的过程需要拷贝数组，每个节点的结果会被扫描不止一次，越深的结点扫描次数越多，时间复杂度不再是`O(n)`
+- 开辟一个全局变量，存储在`class`中，并对其进行读取、维护和更改，可以完全避免在递归中的拷贝、修改操作产生的额外开销
+- 先写递归逻辑，再考虑递归终止条件：如果没有子树，递归终止，返回上一层
+
+    [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%2094.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86.md)
+
+<br/>
+
+**Example 2**: [N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/)
+
+- 前序遍历：根-左子树-右子树，最后返回一个存储整数序列的数组
+- 这里是N叉树，无左右子树，递归遍历时对N叉树root的所有子节点进行循环递归
+- 依然开辟一个全局变量，并对其进行读取、维护和更改，在递归结束后返回结果
+
+    **递归法**  [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%20589.%20N%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86.md)
+    
+    **进阶：迭代法？**
 
 
-[N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/)
+<br/>
+
+**Example 3**: [二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
 
 
-[二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
+<br/>
+
+**Example 4**: [从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
 
-[从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+<br/>
 
+**Homework**: [从中序与后续遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
-[**Homework**  从中序与后续遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
 ***从前序与后序遍历序列，并不能唯一确定一棵二叉树**
-
 
 -------
 
