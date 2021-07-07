@@ -33,7 +33,7 @@ private:
     int topsort() {
         // 统计遍历过后学过的课程数量，初始化learned
         int learned = 0;
-        // 拓扑排序利用队列，初始化队列q
+        // BFS利用队列，初始化队列q
         queue<int> q;
         // 找到inDegree中入度为0的点，先推入队列中
         for (int i = 0; i < n; i ++) {
