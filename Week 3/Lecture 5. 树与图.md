@@ -1,4 +1,4 @@
-## 树与图
+## Lecture 5. 树与图
 
 
 ### 树（Tree）
@@ -164,13 +164,13 @@ class TreeNode:
 - 利用python可以将preorder和inorder数组直接截取，而C++和Java则需要拷贝数组，可以单独存储数组下标来分离左子树和右子树，存储`inorder`中root的位置
 - 在一层递归中，利用`inorder`中root的位置分别求出左子树的size和右子树的size，再利用所得的左子树size和右子树size分离得到当前root的两个子树，以进入下一层递归
 - 递归的终止条件：当遍历完`preorder`中`root`之前所有的结点，返回`null`
-
-
+- [代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%20105.%20%E4%BB%8E%E5%89%8D%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91.md)
 
 <br/>
 
 **Homework**: [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
+[代码实现](https://github.com/AdaSheng07/Algorithm-start-from-zero-w-YudongLee/blob/main/Week%203/LeetCode%20106.%20%E4%BB%8E%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91.md)
 
 ***从前序与后序遍历序列，并不能唯一确定一棵二叉树**
 
@@ -245,7 +245,12 @@ N个结点N条边
 ![image](https://user-images.githubusercontent.com/86143164/124428095-d26f1a80-dd9e-11eb-8eaa-3340bcce7f12.png)
 
 
-[课程表](https://leetcode-cn.com/problems/course-schedule/)
+**Example:**  [课程表](https://leetcode-cn.com/problems/course-schedule/)
+
+- 在学习课程`a[1]`之前必须学习`b[i]`，即在`a[1]`与`b[i]`之间连接一条边
+- 什么时候结果为false？在学习`a[1]`之前必须学习`b[i]`，在学习`b[1]`之前必须学习`a[i]`，`a[1]`与`b[i]`互为先修课——**成环**
+
+
 
 
 
