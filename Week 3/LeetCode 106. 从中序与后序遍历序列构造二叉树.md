@@ -28,7 +28,8 @@ public:
     while (inorder[mid] != root->val) mid++;
     // 分别计算左子树与右子树的size
     int leftSize = mid - l1;
-    int rightSize = r1 - mid;
+    // 右子树的size其实用不上
+    // int rightSize = r1 - mid;
     // 递归左右子树，构造二叉树
     root->left = build(inorder, l1, mid - 1, postorder, l2, l2 + leftSize - 1);
     root->right = build(inorder, mid + 1, r1, postorder, l2 + leftSize, r2 - 1);
