@@ -20,7 +20,6 @@ public:
     TreeNode* build(vector<int>& inorder, int l1, int r1, 
                     vector<int>& postorder, int l2, int r2){
     if (l1 > r1) return nullptr; 
-    if (l2 > r2) return nullptr;
     // 根据后序遍历存储最后一个元素为root
     TreeNode* root = new TreeNode(postorder[r2]);
     // 在中序遍历中寻找root所在位置并存储索引mid
