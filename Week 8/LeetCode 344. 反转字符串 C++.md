@@ -1,4 +1,5 @@
 ```C++
+// 方法一：单指针，利用s[i]与s[n-i-1]之间的调换，时间复杂度O(n)
 
 class Solution {
 public:
@@ -10,6 +11,22 @@ public:
             // 先更新s[n-i-1]，再更新s[i]
             s[s.size() - 1 - i] = s[i];            
             s[i] = s[i] + delta;
+        }
+    }
+};
+
+```
+
+```C++
+// 方法二：双指针，时间复杂度O(n)
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        // 双指针
+        int left, right;
+        for (left = 0, right = s.size() - 1; left < right; left++, right--){
+            swap(s[left], s[right]);
         }
     }
 };
