@@ -27,7 +27,10 @@
 
 #### LeetCode 743. 网络延迟时间
 
-![image](https://user-images.githubusercontent.com/86143164/128900708-e0926e46-3de1-4f32-aeb4-1f66031a8149.png)
+
+![image](https://user-images.githubusercontent.com/86143164/129053557-99d96765-6d96-42de-8535-2b0ae42599a0.png)
+
+
 
 ```C++
 
