@@ -58,7 +58,7 @@ public:
     }
 
     int n; // 矩阵维度
-    unordered_map<int, int> cnt; // 存入对应状态到达目标状态途径的单元格总数
+    unordered_map<int, int> cnt; // 存入从起点到达目前状态途径的单元格总数
     priority_queue<pair<int, int>> q; // 优先队列
 };
 ```
