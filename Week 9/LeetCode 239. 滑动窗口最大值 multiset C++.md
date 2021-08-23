@@ -22,11 +22,11 @@ public:
         int left = 0;
         int i = 0;
         while (i <= k + left - 1 && i < nums.size()) {
-            window.insert(nums[i]);
+            window.insert(nums[i]); // 在window中插入k个nums中的连续值
             if (i == k + left - 1) {
-                ans.push_back(*window.rbegin());
-                window.erase(window.find(nums[left]));
-                left++;
+                ans.push_back(*window.rbegin()); // 返回multiset中最后一个值，即最大值
+                window.erase(window.find(nums[left])); // 将window最左端的元素删除
+                left++; // left加一，更新window
             }
             i++;
         }
